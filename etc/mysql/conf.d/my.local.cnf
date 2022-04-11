@@ -1,0 +1,46 @@
+[mysqld]
+port = 3306
+# character set
+character_set_server = utf8mb4
+collation_server = utf8mb4_0900_ai_ci
+character-set-client-handshake = FALSE
+
+# timezone
+default-time-zone = SYSTEM
+log_timestamps = SYSTEM
+
+# Error Log
+log-error = mysql-error.log
+
+# innnodb
+innodb_log_file_size = 128M
+innodb_log_buffer_size = 8M
+innodb_flush_log_at_trx_commit = 2
+innodb_lock_wait_timeout = 20
+innodb_file_per_table = true
+
+# Slow Query Log
+slow_query_log = 1
+slow_query_log_file = mysql-slow.log
+long_query_time = 1.0
+log_queries_not_using_indexes = 0
+
+# General Log
+general_log = 1
+general_log_file = mysql-general.log
+
+# general setting
+wait_timeout = 60
+max_connections = 1000
+max_connect_errors = 10000
+back_log = 1024
+default_authentication_plugin = mysql_native_password
+open_files_limit = 32768
+mysqlx = OFF
+binlog_expire_logs_seconds = 259200
+
+[mysql]
+default-character-set = utf8mb4
+
+[client]
+default-character-set = utf8mb4

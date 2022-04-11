@@ -1,0 +1,5 @@
+FROM node:16-bullseye-slim
+
+WORKDIR /var/www/html
+
+RUN npm install -g @vue/cli
