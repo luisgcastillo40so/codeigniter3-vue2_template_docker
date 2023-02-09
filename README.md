@@ -1,7 +1,10 @@
-# 開発環境構築
+# 開発環境構築  
+# Create your enviroment
+# Crear entorno de desarrollo
 
 ## 構築されるもの
-
+# what is built
+# lo que se construye
 - node
     - vue
 - php
@@ -10,14 +13,20 @@
 - Nginx
 
 ## 構築手順
+# Building procedure
+# Procedimiento de construcción
 
 ### php/codeigniter3 側の環境を構築。
+# Build a side environment
+# Construye un entorno lateral.
 
 ```bash
 make provision
 ```
 
 上記コマンドを実行し、以下の表示が出ればphp/codeigniter側はOKです。
+Execute the above command, and if the following is displayed, the php/codeigniter side is OK.
+Ejecute el comando anterior y, si se muestra lo siguiente, el  php/codeigniter está bien.
 
 ```text
 NAME                COMMAND                  SERVICE             STATUS              PORTS
@@ -32,12 +41,17 @@ app_php             "docker-php-entrypoi…"   php                 running      
 
 
 ### 次にnode/vueの環境を構築。
+### Next, build a node/vue environment.
+### A continuación, cree un entorno de nodo/vue.
 
 ```bash
 make vue-create
 ```
 
 上記コマンドを実行すると作成する vue の環境を確認してくるので適宜答えると、 以下の表示が出ればnode/vue側はOKです。
+When you execute the above command, it will check the vue environment to be created, so answer accordingly, and if the following is displayed, the node/vue side is OK.
+Cuando ejecute el comando anterior, verificará el entorno vue que se creará, así que responda en consecuencia, y si se muestra lo siguiente, el lado del nodo/vue está bien.
+
 
 ```text
 🎉  Successfully created project html.
@@ -47,27 +61,29 @@ make vue-create
 ```
 
 ### Makefile のコマンド説明
+### Makefile command description
+### Descripción del comando Makefile
 
 ```text
-make provision                php/codeigniter側のプロビジョニング。最初に実行することで環境が整います。
-make app-build-no-cache       docker image を完全に削除してから0から再作成。
-make app-build                docker image を再作成(キャッシュがあれば利用します)
-make app-up                   docker compose をバックグランドで起動。
-make app-down                 docker compose を終了および停止します。
-make allclean                 docker compose で作成した全てを停止して削除します。
-make app-test                 php test(実際のテスト方法はcodeigniter側に併せて修正してください。
-make copy-env                 .env / .env.testing をサンプルからコピーします。
-make db-fresh                 dbのマイグレーションを実施します。(デフォルトではサンプルで作られたものをマイグレーションします)
-make test-db-fresh            test用dbのマイグレーションを実施します。(デフォルトではサンプルで作られたものをマイグレーションします)
-make composer-install         composer でのインストールを実施します。
-make composer-dump-autoload   クラスのオートロードを実施します。
-make vue-create               vue createでvueの初期設定を実施します。
-make npm-install              npm installを実施します。
-make npm-ci                   npm ci を実施します。
-make npm-serve                npm ciの後、 npm run serve を実施します。
-make vendor-copy              ローカルにある src/vendor 以下を削除後、docker コンテナ内のvendorの内容をsrc/vendor にコピーします。
-make node_modules-copy        ローカルにある src/node_modules 以下を削除後、docker コンテナ内のvendorの内容をsrc/node_modules にコピーします。
-make help                     コマンドリストを表示します。
+make provision                php/codeigniter側のプロビジョニング。最初に実行することで環境が整います。Aprovisionamiento de php/codeigniter. 
+make app-build-no-cache       docker image を完全に削除してから0から再作成。Elimine por completo y vuelva a crearla desde 0.
+make app-build                docker image を再作成(キャッシュがあれば利用します) recrear (usar caché si está disponible)
+make app-up                   docker compose をバックグランドで起動。se inicia en segundo plano.
+make app-down                 docker compose を終了および停止します。terminar y detener
+make allclean                 docker compose で作成した全てを停止して削除します。Detenga y elimine todo lo creado por .
+make app-test                 php test(実際のテスト方法はcodeigniter側に併せて修正してください。(Modifique el método de prueba real de acuerdo con el lado del codeigniter.)
+make copy-env                 .env / .env.testing をサンプルからコピーします。se copia de la muestra.
+make db-fresh                 dbのマイグレーションを実施します。(デフォルトではサンプルで作られたものをマイグレーションします) refresca la base de datos
+make test-db-fresh            test用dbのマイグレーションを実施します。(デフォルトではサンプルで作られたものをマイグレーションします) prueba el refrescamiento de base de datos
+make composer-install         composer でのインストールを実施します。Realice la instalación
+make composer-dump-autoload   クラスのオートロードを実施します。Hacer cumplir la carga automática de clases.
+make vue-create               vue createでvueの初期設定を実施します。 Inicializa vuejs
+make npm-install              npm installを実施します。instala con npm
+make npm-ci                   npm ci を実施します。 ejecuta npm ci
+make npm-serve                npm ciの後、 npm run serve を実施します。 Crea el servidor
+make vendor-copy              ローカルにある src/vendor 以下を削除後、docker コンテナ内のvendorの内容をsrc/vendor にコピーします。 Copia la carpeta vendor
+make node_modules-copy        ローカルにある src/node_modules 以下を削除後、docker コンテナ内のvendorの内容をsrc/node_modules にコピーします。Copia modulos de nodejs
+make help                     コマンドリストを表示します。 Ayuda
 ```
 
 ## 注意事項など
